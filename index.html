@@ -6,6 +6,7 @@
 
 <style>
 
+/* ================= BASE ================= */
 *{
     margin:0;
     padding:0;
@@ -14,76 +15,93 @@
 
 body{
     font-family:"Microsoft JhengHei";
-    background:#fff8fc;
+    background:#f7f7fb;
+    color:#333;
 }
 
-/* NAV */
+/* ================= NAV ================= */
 .nav{
-    background:white;
     height:70px;
     display:flex;
     justify-content:center;
     align-items:center;
-    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+
+    background:#ffffff;
+    border-bottom:1px solid #f0d6e6;
+    box-shadow:0 2px 10px rgba(0,0,0,0.04);
 }
 
 .nav a{
     text-decoration:none;
-    color:#ff6fa7;
-    font-weight:bold;
+    color:#666;
     margin:0 25px;
+    font-weight:600;
+    transition:0.2s;
+}
+
+.nav a:hover{
+    color:#ff6fa7;
 }
 
 /* ================= BANNER ================= */
 .banner{
     height:380px;
-    background:linear-gradient(135deg,#ffd6e7,#f3e4ff);
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
     text-align:center;
+
+    background:linear-gradient(135deg,#ffffff,#ffe4ef);
+    border-bottom:1px solid #ffd6e7;
 }
 
 .banner h1{
-    font-size:55px;
-    color:white;
-    text-shadow:2px 2px 8px rgba(0,0,0,0.2);
+    font-size:54px;
+    color:#ff6fa7;
+    text-shadow:0 3px 10px rgba(255,110,160,0.2);
 }
 
 .banner p{
     margin-top:10px;
-    color:white;
-    font-size:20px;
+    font-size:18px;
+    color:#555;
 }
 
-/* 🔥 新增介紹語 */
 .banner .subtext{
-    margin-top:8px;
-    color:white;
-    font-size:16px;
-    opacity:0.9;
+    margin-top:10px;
+    font-size:14px;
+    color:#888;
 }
 
-/* 🔥 兩個按鈕 */
+/* ================= BUTTON ================= */
 .banner .btns{
-    margin-top:20px;
+    margin-top:22px;
 }
 
 .banner .btns a{
+    display:inline-block;
     text-decoration:none;
-    background:white;
-    color:#ff69a6;
+
     padding:10px 22px;
-    border-radius:25px;
     margin:0 8px;
+
+    background:#ffffff;
+    color:#ff6fa7;
+
+    border:2px solid #ffd1e6;
+    border-radius:25px;
+
     font-weight:bold;
-    transition:0.3s;
+    transition:0.25s;
+
+    box-shadow:0 4px 12px rgba(255,110,160,0.15);
 }
 
 .banner .btns a:hover{
-    background:#ff69a6;
+    background:#ff6fa7;
     color:white;
+    transform:translateY(-2px);
 }
 
 /* ================= SECTION ================= */
@@ -93,15 +111,26 @@ body{
     padding:40px 0;
 }
 
-/* 🔥 補回標題 */
 .title{
     text-align:center;
-    font-size:32px;
+    font-size:30px;
     color:#ff6fa7;
     margin-bottom:20px;
+
+    position:relative;
 }
 
-/* FILTER */
+.title::after{
+    content:"";
+    width:60px;
+    height:3px;
+    background:#ffd1e6;
+    display:block;
+    margin:10px auto 0;
+    border-radius:10px;
+}
+
+/* ================= FILTER ================= */
 .tabs{
     display:flex;
     justify-content:center;
@@ -112,11 +141,17 @@ body{
 .tabs button{
     border:none;
     padding:8px 14px;
-    background:#fff0f6;
-    color:#ff6fa7;
-    border-radius:10px;
+
+    background:#ffffff;
+    color:#666;
+
+    border:1px solid #ffd6e7;
+    border-radius:20px;
+
     cursor:pointer;
-    font-weight:bold;
+    font-weight:600;
+
+    transition:0.2s;
 }
 
 .tabs button:hover{
@@ -124,38 +159,40 @@ body{
     color:white;
 }
 
-/* NEWS LIST */
+/* ================= NEWS ================= */
 .news-list{
     display:flex;
     flex-direction:column;
-    gap:10px;
+    gap:12px;
 }
 
 .news-item{
-    background:white;
-    padding:15px;
+    background:#ffffff;
+    padding:16px;
+
     border-radius:12px;
-    box-shadow:0 0 10px rgba(0,0,0,0.08);
+    border:1px solid #f3d7e5;
+
+    box-shadow:0 6px 18px rgba(0,0,0,0.05);
+
     cursor:pointer;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
+
     transition:0.2s;
 }
 
 .news-item:hover{
-    transform:translateX(5px);
-}
-
-.left{
-    display:flex;
-    flex-direction:column;
-    gap:5px;
+    transform:translateY(-3px);
+    border-color:#ffb6d1;
+    box-shadow:0 10px 25px rgba(255,110,160,0.15);
 }
 
 .title-text{
-    font-weight:bold;
-    color:#ff69a6;
+    font-weight:700;
+    color:#333;
 }
 
 .date{
@@ -166,16 +203,20 @@ body{
 .tag{
     font-size:12px;
     padding:4px 10px;
-    border-radius:20px;
+
     background:#ffe4ef;
-    color:#d94d87;
+    color:#ff6fa7;
+
+    border-radius:20px;
+    font-weight:600;
 }
 
-/* MODAL */
+/* ================= MODAL ================= */
 .modal{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.45);
+    background:rgba(0,0,0,0.5);
+
     display:none;
     justify-content:center;
     align-items:center;
@@ -186,11 +227,25 @@ body{
 }
 
 .modal-box{
-    width:500px;
-    background:white;
-    padding:30px;
+    width:520px;
+    background:#ffffff;
+
+    padding:25px;
     border-radius:15px;
-    position:relative;
+
+    border:1px solid #ffd6e7;
+
+    box-shadow:0 20px 40px rgba(0,0,0,0.15);
+}
+
+.modal-box h2{
+    color:#ff6fa7;
+}
+
+.modal-box p{
+    margin-top:10px;
+    color:#555;
+    line-height:1.6;
 }
 
 .close{
@@ -199,7 +254,7 @@ body{
     right:15px;
     cursor:pointer;
     font-size:20px;
-    color:#ff69a6;
+    color:#ff6fa7;
 }
 
 </style>
@@ -209,20 +264,19 @@ body{
 
 <!-- NAV -->
 <div class="nav">
-    <a>首頁</a>
-    <a>公告</a>
-    <a>下載</a>
-    <a>Discord</a>
+    <a href="#">首頁</a>
+    <a href="#">公告</a>
+    <a href="#">下載</a>
+    <a href="#">Discord</a>
 </div>
 
-<!-- ================= BANNER（已補回完整） ================= -->
+<!-- BANNER -->
 <div class="banner">
-    <h1>♡｡ﾟ 夢唏Story ﾟ｡♡</h1>
-
-    <p>夢幻 × 耐玩 × 長期經營</p>
+    <h1>♡｡ﾟ 夢 唏 S t o r y ﾟ｡♡</h1>
+    <p>夢 幻 × 長 期 × 穩 定 經 營 </p>
 
     <div class="subtext">
-        經驗｜ 1 倍 掉落｜ 1 倍 楓幣｜ 1 倍
+        經驗 1x ｜ 掉落 1x ｜ 楓幣 1x
     </div>
 
     <div class="btns">
@@ -231,13 +285,11 @@ body{
     </div>
 </div>
 
-<!-- ================= NEWS ================= -->
+<!-- SECTION -->
 <div class="section">
 
-    <!-- 🔥 補回標題 -->
-    <div class="title">♡｡ﾟ最新公告 ﾟ｡♡</div>
+    <div class="title">最新公告</div>
 
-    <!-- FILTER -->
     <div class="tabs">
         <button onclick="filter('all')">全部公告</button>
         <button onclick="filter('update')">更新公告</button>
@@ -260,87 +312,78 @@ body{
 
 <script>
 
-/* ================= DATABASE ================= */
 const newsData = [
     {
-        title: "職業技能平衡調整",
-        type: "update",
-        date: "2026-06-20",
-        content: "修正職業技能傷害與平衡問題"
+        title:"職業平衡調整",
+        type:"update",
+        date:"2026-06-20",
+        content:"修正技能傷害與職業平衡問題"
     },
     {
-        title: "端午活動開放",
-        type: "event",
-        date: "2026-06-19",
-        content: "掉落加倍 + 限時副本開啟"
+        title:"端午活動開放",
+        type:"event",
+        date:"2026-06-19",
+        content:"限時活動 + 掉落加倍開啟"
     },
     {
-        title: "商城更新",
-        type: "update",
-        date: "2026-06-18",
-        content: "新增時裝與坐騎系統"
+        title:"商城更新",
+        type:"update",
+        date:"2026-06-18",
+        content:"新增時裝與坐騎系統"
     },
     {
-        title: "緊急維護公告",
-        type: "important",
-        date: "2026-06-17",
-        content: "伺服器將於 22:00 進行維護"
+        title:"緊急維護公告",
+        type:"important",
+        date:"2026-06-17",
+        content:"伺服器將於 22:00 維護"
     }
 ];
 
-/* SORT */
 function sortNews(data){
-    return data.sort((a,b)=> new Date(b.date) - new Date(a.date));
+    return data.sort((a,b)=> new Date(b.date)-new Date(a.date));
 }
 
-/* RENDER */
-function renderNews(filterType="all"){
+function renderNews(type="all"){
+    const list=document.getElementById("newsList");
+    list.innerHTML="";
 
-    const list = document.getElementById("newsList");
-    list.innerHTML = "";
+    let data=sortNews([...newsData]);
 
-    let sorted = sortNews([...newsData]);
+    data.forEach(n=>{
+        if(type!=="all" && n.type!==type) return;
 
-    sorted.forEach(n=>{
+        const item=document.createElement("div");
+        item.className="news-item";
 
-        if(filterType !== "all" && n.type !== filterType) return;
-
-        const item = document.createElement("div");
-        item.className = "news-item";
-
-        item.innerHTML = `
-            <div class="left">
+        item.innerHTML=`
+            <div>
                 <div class="title-text">${n.title}</div>
                 <div class="date">📅 ${n.date}</div>
             </div>
             <div class="tag">${n.type}</div>
         `;
 
-        item.onclick = () => openModal(n.title, n.content);
-
+        item.onclick=()=>openModal(n.title,n.content);
         list.appendChild(item);
     });
 }
 
-/* FILTER */
 function filter(type){
     renderNews(type);
 }
 
-/* MODAL */
-function openModal(title, content){
+function openModal(t,c){
     document.getElementById("modal").classList.add("active");
-    document.getElementById("title").innerText = title;
-    document.getElementById("content").innerHTML = content;
+    document.getElementById("title").innerText=t;
+    document.getElementById("content").innerText=c;
 }
 
 function closeModal(e){
-    if(!e || e.target.id === "modal"){
+    if(!e || e.target.id==="modal"){
         document.getElementById("modal").classList.remove("active");
     }
 }
 
-/* INIT */
 renderNews();
 
 </script>
