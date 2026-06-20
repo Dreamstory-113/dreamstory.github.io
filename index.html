@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<title>夢唏Story</title>
+<title>夢唏Story 官網</title>
 
 <style>
 
@@ -13,11 +13,11 @@
 }
 
 body{
-    background:#fff8fc;
     font-family:"Microsoft JhengHei";
+    background:#fff8fc;
 }
 
-/* ================= NAV ================= */
+/* NAV */
 .nav{
     background:white;
     height:70px;
@@ -36,136 +36,170 @@ body{
 
 /* ================= BANNER ================= */
 .banner{
-    height:450px;
+    height:380px;
     background:linear-gradient(135deg,#ffd6e7,#f3e4ff);
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
+    text-align:center;
 }
 
 .banner h1{
-    font-size:60px;
+    font-size:55px;
     color:white;
     text-shadow:2px 2px 8px rgba(0,0,0,0.2);
 }
 
 .banner p{
-    margin-top:15px;
+    margin-top:10px;
     color:white;
     font-size:20px;
 }
 
-.btn a{
+/* 🔥 新增介紹語 */
+.banner .subtext{
+    margin-top:8px;
+    color:white;
+    font-size:16px;
+    opacity:0.9;
+}
+
+/* 🔥 兩個按鈕 */
+.banner .btns{
+    margin-top:20px;
+}
+
+.banner .btns a{
     text-decoration:none;
     background:white;
     color:#ff69a6;
-    padding:12px 30px;
-    border-radius:30px;
-    margin:0 10px;
+    padding:10px 22px;
+    border-radius:25px;
+    margin:0 8px;
     font-weight:bold;
+    transition:0.3s;
+}
+
+.banner .btns a:hover{
+    background:#ff69a6;
+    color:white;
 }
 
 /* ================= SECTION ================= */
 .section{
-    width:1200px;
+    width:1000px;
     margin:auto;
-    padding:60px 0;
+    padding:40px 0;
 }
 
+/* 🔥 補回標題 */
 .title{
     text-align:center;
-    color:#ff6fa7;
     font-size:32px;
-    margin-bottom:40px;
+    color:#ff6fa7;
+    margin-bottom:20px;
 }
 
-.box{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
+/* FILTER */
+.tabs{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:20px;
 }
 
-/* ================= CARD ================= */
-.card input{
-    display:none;
-}
-
-/* 點擊卡片 */
-.card label{
-    display:block;
-    background:white;
-    padding:25px;
-    border-radius:15px;
-    box-shadow:0 0 15px rgba(0,0,0,0.08);
+.tabs button{
+    border:none;
+    padding:8px 14px;
+    background:#fff0f6;
+    color:#ff6fa7;
+    border-radius:10px;
     cursor:pointer;
     font-weight:bold;
+}
+
+.tabs button:hover{
+    background:#ff6fa7;
+    color:white;
+}
+
+/* NEWS LIST */
+.news-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.news-item{
+    background:white;
+    padding:15px;
+    border-radius:12px;
+    box-shadow:0 0 10px rgba(0,0,0,0.08);
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    transition:0.2s;
+}
+
+.news-item:hover{
+    transform:translateX(5px);
+}
+
+.left{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+}
+
+.title-text{
+    font-weight:bold;
     color:#ff69a6;
-    transition:0.3s;
 }
 
-.card label:hover{
-    transform:translateY(-3px);
+.date{
+    font-size:12px;
+    color:#999;
 }
 
-/* ================= MODAL ================= */
+.tag{
+    font-size:12px;
+    padding:4px 10px;
+    border-radius:20px;
+    background:#ffe4ef;
+    color:#d94d87;
+}
+
+/* MODAL */
 .modal{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.4);
-
-    display:flex;
+    background:rgba(0,0,0,0.45);
+    display:none;
     justify-content:center;
     align-items:center;
-
-    opacity:0;
-    visibility:hidden;
-    transition:0.3s;
 }
 
-/* 開啟 */
-.card input:checked + label + .modal{
-    opacity:1;
-    visibility:visible;
+.modal.active{
+    display:flex;
 }
 
-.modal-content{
-    background:white;
+.modal-box{
     width:500px;
+    background:white;
     padding:30px;
     border-radius:15px;
     position:relative;
-    animation:pop 0.2s ease;
 }
 
-@keyframes pop{
-    from{transform:scale(0.8); opacity:0;}
-    to{transform:scale(1); opacity:1;}
-}
-
-/* ❌ 關閉按鈕（修正重點） */
 .close{
     position:absolute;
     top:10px;
     right:15px;
+    cursor:pointer;
     font-size:20px;
-    cursor:pointer;
     color:#ff69a6;
-}
-
-/* 👉 關鍵修正：用 label 控制關閉 */
-.close label{
-    cursor:pointer;
-    color:#ff69a6;
-    font-size:22px;
-}
-
-/* ================= FOOTER ================= */
-.footer{
-    background:white;
-    text-align:center;
-    padding:30px;
-    color:#888;
 }
 
 </style>
@@ -173,131 +207,143 @@ body{
 
 <body>
 
+<!-- NAV -->
 <div class="nav">
-    <a href="#">首頁</a>
-    <a href="#">公告</a>
-    <a href="#">下載</a>
-    <a href="#">Discord</a>
+    <a>首頁</a>
+    <a>公告</a>
+    <a>下載</a>
+    <a>Discord</a>
 </div>
 
+<!-- ================= BANNER（已補回完整） ================= -->
 <div class="banner">
     <h1>♡｡ﾟ 夢唏Story ﾟ｡♡</h1>
+
     <p>夢幻 × 耐玩 × 長期經營</p>
-</div>
 
-<!-- ================= FEATURES ================= -->
-<div class="section">
-    <div class="title">♡｡ﾟ 遊戲特色 ﾟ｡♡</div>
+    <div class="subtext">
+        經驗｜ 1 倍 掉落｜ 1 倍 楓幣｜ 1 倍
+    </div>
 
-    <div class="box">
-
-        <!-- 卡片 -->
-        <div class="card">
-            <input type="checkbox" id="f1">
-
-            <label for="f1">💎 測試訊息（點我）</label>
-
-            <div class="modal">
-                <div class="modal-content">
-
-                    <!-- ❌ 正確關閉 -->
-                    <label for="f1" class="close">✖</label>
-
-                    <h2>測試訊息</h2>
-                    <p>0620測試:D 這裡是完整內容。</p>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <input type="checkbox" id="f2">
-
-            <label for="f2">🌟 潛能系統（點我）</label>
-
-            <div class="modal">
-                <div class="modal-content">
-                    <label for="f2" class="close">✖</label>
-
-                    <h2>潛能系統</h2>
-                    <p>可強化裝備、打造最強角色。</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <input type="checkbox" id="f3">
-
-            <label for="f3">🎓 師徒系統（點我）</label>
-
-            <div class="modal">
-                <div class="modal-content">
-                    <label for="f3" class="close">✖</label>
-
-                    <h2>師徒系統</h2>
-                    <p>收徒與出師系統。</p>
-                </div>
-            </div>
-        </div>
-
+    <div class="btns">
+        <a href="#">立即下載</a>
+        <a href="#">加入Discord</a>
     </div>
 </div>
 
-<!-- ================= ANNOUNCEMENT ================= -->
+<!-- ================= NEWS ================= -->
 <div class="section">
 
-    <div class="title">♡｡ﾟ 最新公告 ﾟ｡♡</div>
+    <!-- 🔥 補回標題 -->
+    <div class="title">最新公告</div>
 
-    <div class="box">
+    <!-- FILTER -->
+    <div class="tabs">
+        <button onclick="filter('all')">全部</button>
+        <button onclick="filter('update')">更新</button>
+        <button onclick="filter('event')">活動</button>
+        <button onclick="filter('important')">重大</button>
+    </div>
 
-        <div class="card">
-            <input type="checkbox" id="n1">
-            <label for="n1">端午活動（點我）</label>
+    <div id="newsList" class="news-list"></div>
 
-            <div class="modal">
-                <div class="modal-content">
-                    <label for="n1" class="close">✖</label>
+</div>
 
-                    <h2>端午活動</h2>
-                    <p>2026/06/20 活動開放。</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <input type="checkbox" id="n2">
-            <label for="n2">新手禮包</label>
-
-            <div class="modal">
-                <div class="modal-content">
-                    <label for="n2" class="close">✖</label>
-
-                    <h2>新手禮包</h2>
-                    <p>登入即可獲得獎勵。</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <input type="checkbox" id="n3">
-            <label for="n3">商城更新</label>
-
-            <div class="modal">
-                <div class="modal-content">
-                    <label for="n3" class="close">✖</label>
-
-                    <h2>商城更新</h2>
-                    <p>新增時裝系列。</p>
-                </div>
-            </div>
-        </div>
-
+<!-- MODAL -->
+<div id="modal" class="modal" onclick="closeModal(event)">
+    <div class="modal-box">
+        <div class="close" onclick="closeModal()">✖</div>
+        <h2 id="title"></h2>
+        <p id="content"></p>
     </div>
 </div>
 
-<div class="footer">
-    © DreamStory 夢唏Story
-</div>
+<script>
+
+/* ================= DATABASE ================= */
+const newsData = [
+    {
+        title: "職業技能平衡調整",
+        type: "update",
+        date: "2026-06-20",
+        content: "修正職業技能傷害與平衡問題"
+    },
+    {
+        title: "端午活動開放",
+        type: "event",
+        date: "2026-06-19",
+        content: "掉落加倍 + 限時副本開啟"
+    },
+    {
+        title: "商城更新",
+        type: "update",
+        date: "2026-06-18",
+        content: "新增時裝與坐騎系統"
+    },
+    {
+        title: "緊急維護公告",
+        type: "important",
+        date: "2026-06-17",
+        content: "伺服器將於 22:00 進行維護"
+    }
+];
+
+/* SORT */
+function sortNews(data){
+    return data.sort((a,b)=> new Date(b.date) - new Date(a.date));
+}
+
+/* RENDER */
+function renderNews(filterType="all"){
+
+    const list = document.getElementById("newsList");
+    list.innerHTML = "";
+
+    let sorted = sortNews([...newsData]);
+
+    sorted.forEach(n=>{
+
+        if(filterType !== "all" && n.type !== filterType) return;
+
+        const item = document.createElement("div");
+        item.className = "news-item";
+
+        item.innerHTML = `
+            <div class="left">
+                <div class="title-text">${n.title}</div>
+                <div class="date">📅 ${n.date}</div>
+            </div>
+            <div class="tag">${n.type}</div>
+        `;
+
+        item.onclick = () => openModal(n.title, n.content);
+
+        list.appendChild(item);
+    });
+}
+
+/* FILTER */
+function filter(type){
+    renderNews(type);
+}
+
+/* MODAL */
+function openModal(title, content){
+    document.getElementById("modal").classList.add("active");
+    document.getElementById("title").innerText = title;
+    document.getElementById("content").innerHTML = content;
+}
+
+function closeModal(e){
+    if(!e || e.target.id === "modal"){
+        document.getElementById("modal").classList.remove("active");
+    }
+}
+
+/* INIT */
+renderNews();
+
+</script>
 
 </body>
 </html>
