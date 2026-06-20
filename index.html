@@ -17,7 +17,9 @@ body{
     font-family:"Microsoft JhengHei";
 }
 
-/* 導覽列 */
+/* =========================
+   NAV
+========================= */
 .nav{
     background:white;
     height:70px;
@@ -32,22 +34,14 @@ body{
     color:#ff6fa7;
     font-weight:bold;
     margin:0 25px;
-    transition:0.3s;
 }
 
-.nav a:hover{
-    color:#d94d87;
-}
-
-/* 首頁橫幅 */
+/* =========================
+   Banner
+========================= */
 .banner{
     height:450px;
-    background:linear-gradient(
-        135deg,
-        #ffd6e7,
-        #f3e4ff
-    );
-
+    background:linear-gradient(135deg,#ffd6e7,#f3e4ff);
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -66,10 +60,6 @@ body{
     font-size:20px;
 }
 
-.btn{
-    margin-top:30px;
-}
-
 .btn a{
     text-decoration:none;
     background:white;
@@ -80,7 +70,9 @@ body{
     font-weight:bold;
 }
 
-/* 區塊 */
+/* =========================
+   SECTION
+========================= */
 .section{
     width:1200px;
     margin:auto;
@@ -100,19 +92,85 @@ body{
     gap:20px;
 }
 
-.card{
+/* =========================
+   卡片（點擊觸發）
+========================= */
+.card label{
+    display:block;
     background:white;
-    border-radius:15px;
     padding:25px;
+    border-radius:15px;
     box-shadow:0 0 15px rgba(0,0,0,0.08);
-}
-
-.card h3{
+    cursor:pointer;
+    font-weight:bold;
     color:#ff69a6;
-    margin-bottom:10px;
+    transition:0.3s;
 }
 
-/* Footer */
+.card label:hover{
+    transform:translateY(-3px);
+}
+
+/* 隱藏 checkbox */
+.card input{
+    display:none;
+}
+
+/* =========================
+   🔥 MODAL（彈出視窗）
+========================= */
+.modal{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.4);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    opacity:0;
+    visibility:hidden;
+    transition:0.3s;
+}
+
+/* 開啟 modal */
+.card input:checked + label + .modal{
+    opacity:1;
+    visibility:visible;
+}
+
+/* 內容框 */
+.modal-content{
+    background:white;
+    width:500px;
+    padding:30px;
+    border-radius:15px;
+    position:relative;
+    animation:pop 0.25s ease;
+}
+
+/* 彈出動畫 */
+@keyframes pop{
+    from{transform:scale(0.8); opacity:0;}
+    to{transform:scale(1); opacity:1;}
+}
+
+/* 關閉按鈕 */
+.close{
+    position:absolute;
+    top:10px;
+    right:15px;
+    font-size:20px;
+    cursor:pointer;
+    color:#ff69a6;
+}
+
+/* =========================
+   FOOTER
+========================= */
 .footer{
     background:white;
     text-align:center;
@@ -125,96 +183,145 @@ body{
 
 <body>
 
+<!-- NAV -->
 <div class="nav">
     <a href="#">首頁</a>
     <a href="#">公告</a>
     <a href="#">下載</a>
-    <a href="#">新手指南</a>
-    <a href="#">排行榜</a>
     <a href="#">Discord</a>
 </div>
 
+<!-- Banner -->
 <div class="banner">
-
     <h1>♡｡ﾟ 夢唏Story ﾟ｡♡</h1>
-
-    <p>
-    夢幻 × 耐玩 × 長期經營
-    </p>
-
+    <p>夢幻 × 耐玩 × 長期經營</p>
     <div class="btn">
         <a href="#">立即下載</a>
         <a href="#">加入Discord</a>
     </div>
-
 </div>
 
+<!-- 遊戲特色 -->
 <div class="section">
 
-    <div class="title">
-        ♡｡ﾟ 遊戲特色 ﾟ｡♡
-    </div>
+    <div class="title">♡｡ﾟ 遊戲特色 ﾟ｡♡</div>
 
     <div class="box">
 
+        <!-- 卡片1 -->
         <div class="card">
-            <h3>💎 測試訊息</h3>
-            <p>
-            0620測試:D
-            </p>
+            <input type="checkbox" id="f1">
+            <label for="f1">💎 測試訊息（點我查看）</label>
+
+            <div class="modal">
+                <div class="modal-content">
+                    <div class="close">✖</div>
+                    <h2>測試訊息</h2>
+                    <p>
+                        0620測試:D<br>
+                        這裡是完整內容，可以放系統介紹、活動資訊等。
+                    </p>
+                </div>
+            </div>
         </div>
 
+        <!-- 卡片2 -->
         <div class="card">
-            <h3>🌟 潛能系統</h3>
-            <p>
-            多種客製化潛能，
-            打造最強角色。
-            </p>
+            <input type="checkbox" id="f2">
+            <label for="f2">🌟 潛能系統（點我查看）</label>
+
+            <div class="modal">
+                <div class="modal-content">
+                    <div class="close">✖</div>
+                    <h2>潛能系統</h2>
+                    <p>
+                        可強化裝備、洗潛能、打造最強角色。
+                    </p>
+                </div>
+            </div>
         </div>
 
+        <!-- 卡片3 -->
         <div class="card">
-            <h3>🎓 師徒系統</h3>
-            <p>
-            收徒出師，
-            獲得額外獎勵。
-            </p>
+            <input type="checkbox" id="f3">
+            <label for="f3">🎓 師徒系統（點我查看）</label>
+
+            <div class="modal">
+                <div class="modal-content">
+                    <div class="close">✖</div>
+                    <h2>師徒系統</h2>
+                    <p>
+                        收徒與出師系統，可獲得額外獎勵與成長加成。
+                    </p>
+                </div>
+            </div>
         </div>
 
     </div>
-
 </div>
 
+<!-- 最新公告 -->
 <div class="section">
 
-    <div class="title">
-        ♡｡ﾟ 最新公告 ﾟ｡♡
-    </div>
+    <div class="title">♡｡ﾟ 最新公告 ﾟ｡♡</div>
 
     <div class="box">
 
+        <!-- 公告1 -->
         <div class="card">
-            <h3>端午活動開放</h3>
-            <p>2026/06/20</p>
+            <input type="checkbox" id="n1">
+            <label for="n1">端午活動開放（點我查看）</label>
+
+            <div class="modal">
+                <div class="modal-content">
+                    <div class="close">✖</div>
+                    <h2>端午活動開放</h2>
+                    <p>
+                        活動時間：2026/06/20<br>
+                        掉落加倍、限時副本開啟。
+                    </p>
+                </div>
+            </div>
         </div>
 
+        <!-- 公告2 -->
         <div class="card">
-            <h3>新手禮包更新</h3>
-            <p>2026/06/18</p>
+            <input type="checkbox" id="n2">
+            <label for="n2">新手禮包更新（點我查看）</label>
+
+            <div class="modal">
+                <div class="modal-content">
+                    <div class="close">✖</div>
+                    <h2>新手禮包更新</h2>
+                    <p>
+                        登入即可獲得強化禮包與成長資源。
+                    </p>
+                </div>
+            </div>
         </div>
 
+        <!-- 公告3 -->
         <div class="card">
-            <h3>商城新增時裝</h3>
-            <p>2026/06/15</p>
+            <input type="checkbox" id="n3">
+            <label for="n3">商城新增時裝（點我查看）</label>
+
+            <div class="modal">
+                <div class="modal-content">
+                    <div class="close">✖</div>
+                    <h2>商城新增時裝</h2>
+                    <p>
+                        新增限定時裝系列，可於商城購買。
+                    </p>
+                </div>
+            </div>
         </div>
 
     </div>
-
 </div>
 
+<!-- FOOTER -->
 <div class="footer">
-
     © DreamStory 夢唏Story
-
 </div>
 
 </body>
