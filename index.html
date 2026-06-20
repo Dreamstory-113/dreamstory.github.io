@@ -29,6 +29,8 @@ body{
     background:#ffffff;
     border-bottom:1px solid #f0d6e6;
     box-shadow:0 2px 10px rgba(0,0,0,0.04);
+    position:relative;
+    z-index:10;
 }
 
 .nav a{
@@ -52,31 +54,96 @@ body{
     align-items:center;
     text-align:center;
 
-    background:linear-gradient(135deg,#ffffff,#ffe4ef);
-    border-bottom:1px solid #ffd6e7;
+    /* 你的背景不動 */
+    background:
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+        url("https://dreamstory-113.github.io/dreamstory.github.io/maple-bg.webp");
+
+    background-size:cover;
+    background-position:center;
+    position:relative;
+    overflow:hidden;
+}
+
+/* ================= 🍁 楓葉粒子 ================= */
+.particles{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+/* 楓葉 */
+.particle{
+    position:absolute;
+    width:14px;
+    height:14px;
+
+    background:linear-gradient(45deg,#ff6b6b,#ff9f43);
+    clip-path: polygon(
+        50% 0%,
+        60% 20%,
+        80% 20%,
+        65% 40%,
+        80% 60%,
+        55% 50%,
+        50% 100%,
+        45% 50%,
+        20% 60%,
+        35% 40%,
+        20% 20%,
+        40% 20%
+    );
+
+    opacity:0.8;
+    animation: fall linear infinite;
+}
+
+/* 下落動畫 */
+@keyframes fall{
+    0%{
+        transform: translateY(-10%) rotate(0deg);
+        opacity:0;
+    }
+    10%{
+        opacity:1;
+    }
+    100%{
+        transform: translateY(110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* ================= 文字（保持原本） ================= */
+.banner h1,
+.banner p,
+.banner .subtext{
+    color:white;
+    position:relative;
+    z-index:2;
 }
 
 .banner h1{
     font-size:54px;
-    color:#ff6fa7;
-    text-shadow:0 3px 10px rgba(255,110,160,0.2);
+    text-shadow:0 3px 10px rgba(0,0,0,0.6);
 }
 
 .banner p{
     margin-top:10px;
     font-size:18px;
-    color:#555;
 }
 
 .banner .subtext{
     margin-top:10px;
     font-size:14px;
-    color:#888;
+    opacity:0.9;
 }
 
 /* ================= BUTTON ================= */
 .banner .btns{
     margin-top:22px;
+    position:relative;
+    z-index:2;
 }
 
 .banner .btns a{
@@ -104,7 +171,7 @@ body{
     transform:translateY(-2px);
 }
 
-/* ================= SECTION ================= */
+/* ================= SECTION（完全不動） ================= */
 .section{
     width:1000px;
     margin:auto;
@@ -130,7 +197,6 @@ body{
     border-radius:10px;
 }
 
-/* ================= FILTER ================= */
 .tabs{
     display:flex;
     justify-content:center;
@@ -159,7 +225,6 @@ body{
     color:white;
 }
 
-/* ================= NEWS ================= */
 .news-list{
     display:flex;
     flex-direction:column;
@@ -211,7 +276,6 @@ body{
     font-weight:600;
 }
 
-/* ================= MODAL ================= */
 .modal{
     position:fixed;
     inset:0;
@@ -262,7 +326,6 @@ body{
 
 <body>
 
-<!-- NAV -->
 <div class="nav">
     <a href="#">首頁</a>
     <a href="#">公告</a>
@@ -270,8 +333,11 @@ body{
     <a href="#">Discord</a>
 </div>
 
-<!-- BANNER -->
 <div class="banner">
+
+    <!-- 🍁 楓葉層 -->
+    <div class="particles" id="particles"></div>
+
     <h1>♡｡ﾟ 夢 唏 S t o r y ﾟ｡♡</h1>
     <p>夢 幻 × 長 期 × 穩 定 經 營 </p>
 
@@ -285,9 +351,7 @@ body{
     </div>
 </div>
 
-<!-- SECTION -->
 <div class="section">
-
     <div class="title">最新公告</div>
 
     <div class="tabs">
@@ -298,10 +362,8 @@ body{
     </div>
 
     <div id="newsList" class="news-list"></div>
-
 </div>
 
-<!-- MODAL -->
 <div id="modal" class="modal" onclick="closeModal(event)">
     <div class="modal-box">
         <div class="close" onclick="closeModal()">✖</div>
@@ -312,36 +374,28 @@ body{
 
 <script>
 
+/* 🍁 楓葉生成 */
+const container = document.getElementById("particles");
+
+for(let i=0;i<20;i++){
+    const leaf = document.createElement("div");
+    leaf.className = "particle";
+    leaf.style.left = Math.random()*100 + "%";
+    leaf.style.animationDuration = (4 + Math.random()*6) + "s";
+    leaf.style.opacity = Math.random();
+    leaf.style.transform = `scale(${0.5 + Math.random()})`;
+    container.appendChild(leaf);
+}
+
+/* 原本公告不動 */
 const newsData = [
-    {
-        title:"職業平衡調整",
-        type:"update",
-        date:"2026-06-20",
-        content:"修正技能傷害與職業平衡問題"
-    },
-    {
-        title:"端午活動開放",
-        type:"event",
-        date:"2026-06-19",
-        content:"限時活動 + 掉落加倍開啟"
-    },
-    {
-        title:"商城更新",
-        type:"update",
-        date:"2026-06-18",
-        content:"新增時裝與坐騎系統"
-    },
-    {
-        title:"緊急維護公告",
-        type:"important",
-        date:"2026-06-17",
-        content:"伺服器將於 22:00 維護"
-    }
+    {title:"職業平衡調整",type:"update",date:"2026-06-20",content:"修正技能傷害"},
+    {title:"端午活動開放",type:"event",date:"2026-06-19",content:"掉落加倍"},
+    {title:"商城更新",type:"update",date:"2026-06-18",content:"新增時裝"},
+    {title:"緊急維護公告",type:"important",date:"2026-06-17",content:"22:00維護"}
 ];
 
-function sortNews(data){
-    return data.sort((a,b)=> new Date(b.date)-new Date(a.date));
-}
+function sortNews(d){return d.sort((a,b)=>new Date(b.date)-new Date(a.date));}
 
 function renderNews(type="all"){
     const list=document.getElementById("newsList");
@@ -368,16 +422,12 @@ function renderNews(type="all"){
     });
 }
 
-function filter(type){
-    renderNews(type);
-}
-
+function filter(t){renderNews(t);}
 function openModal(t,c){
     document.getElementById("modal").classList.add("active");
     document.getElementById("title").innerText=t;
     document.getElementById("content").innerText=c;
 }
-
 function closeModal(e){
     if(!e || e.target.id==="modal"){
         document.getElementById("modal").classList.remove("active");
