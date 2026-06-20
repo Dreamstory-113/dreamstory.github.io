@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>夢唏Story</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#fff8fc;
+    font-family:"Microsoft JhengHei";
+}
+
+/* 導覽列 */
+.nav{
+    background:white;
+    height:70px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav a{
+    text-decoration:none;
+    color:#ff6fa7;
+    font-weight:bold;
+    margin:0 25px;
+    transition:0.3s;
+}
+
+.nav a:hover{
+    color:#d94d87;
+}
+
+/* 首頁橫幅 */
+.banner{
+    height:450px;
+    background:linear-gradient(
+        135deg,
+        #ffd6e7,
+        #f3e4ff
+    );
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.banner h1{
+    font-size:60px;
+    color:white;
+    text-shadow:2px 2px 8px rgba(0,0,0,0.2);
+}
+
+.banner p{
+    margin-top:15px;
+    color:white;
+    font-size:20px;
+}
+
+.btn{
+    margin-top:30px;
+}
+
+.btn a{
+    text-decoration:none;
+    background:white;
+    color:#ff69a6;
+    padding:12px 30px;
+    border-radius:30px;
+    margin:0 10px;
+    font-weight:bold;
+}
+
+/* 區塊 */
+.section{
+    width:1200px;
+    margin:auto;
+    padding:60px 0;
+}
+
+.title{
+    text-align:center;
+    color:#ff6fa7;
+    font-size:32px;
+    margin-bottom:40px;
+}
+
+.box{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 0 15px rgba(0,0,0,0.08);
+}
+
+.card h3{
+    color:#ff69a6;
+    margin-bottom:10px;
+}
+
+/* Footer */
+.footer{
+    background:white;
+    text-align:center;
+    padding:30px;
+    color:#888;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="nav">
+    <a href="#">首頁</a>
+    <a href="#">公告</a>
+    <a href="#">下載</a>
+    <a href="#">新手指南</a>
+    <a href="#">排行榜</a>
+    <a href="#">Discord</a>
+</div>
+
+<div class="banner">
+
+    <h1>♡｡ﾟ 夢唏Story ﾟ｡♡</h1>
+
+    <p>
+    夢幻 × 耐玩 × 長期經營
+    </p>
+
+    <div class="btn">
+        <a href="#">立即下載</a>
+        <a href="#">加入Discord</a>
+    </div>
+
+</div>
+
+<div class="section">
+
+    <div class="title">
+        ♡｡ﾟ 遊戲特色 ﾟ｡♡
+    </div>
+
+    <div class="box">
+
+        <div class="card">
+            <h3>💎 寶石鑲嵌</h3>
+            <p>
+            裝備可鑲嵌寶石，
+            自由打造專屬能力。
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🌟 潛能系統</h3>
+            <p>
+            多種客製化潛能，
+            打造最強角色。
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🎓 師徒系統</h3>
+            <p>
+            收徒出師，
+            獲得額外獎勵。
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="section">
+
+    <div class="title">
+        ♡｡ﾟ 最新公告 ﾟ｡♡
+    </div>
+
+    <div class="box">
+
+        <div class="card">
+            <h3>端午活動開放</h3>
+            <p>2026/06/20</p>
+        </div>
+
+        <div class="card">
+            <h3>新手禮包更新</h3>
+            <p>2026/06/18</p>
+        </div>
+
+        <div class="card">
+            <h3>商城新增時裝</h3>
+            <p>2026/06/15</p>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="footer">
+
+    © DreamStory 夢唏Story
+
+</div>
+
+</body>
+</html>
