@@ -406,15 +406,42 @@ function renderNews(type="all"){
     data.forEach(n=>{
         if(type!=="all" && n.type!==type) return;
 
+        let tagText="";
+        let tagColor="";
+
+        switch(n.type){
+
+            case "update":
+                tagText="【更新公告】";
+                tagColor="#4a90e2";
+                break;
+
+            case "event":
+                tagText="【活動公告】";
+                tagColor="#2ecc71";
+                break;
+
+            case "important":
+                tagText="【重大公告】";
+                tagColor="#e74c3c";
+                break;
+
+            default:
+                tagText="【一般公告】";
+                tagColor="#999999";
+        }
+
         const item=document.createElement("div");
         item.className="news-item";
 
         item.innerHTML=`
-            <div>
-                <div class="title-text">${n.title}</div>
-                <div class="date">📅 ${n.date}</div>
+            <div class="title-text">
+                <strong>【${n.date}】</strong>
+                <span style="color:${tagColor};font-weight:bold;">
+                    ${tagText}
+                </span>
+                ${n.title}
             </div>
-            <div class="tag">${n.type}</div>
         `;
 
         item.onclick=()=>openModal(n.title,n.content);
