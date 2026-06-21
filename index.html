@@ -389,14 +389,7 @@ for(let i=0;i<20;i++){
     leaf.style.transform = `scale(${0.5 + Math.random()})`;
     container.appendChild(leaf);
 }
-    const bgm = new Audio("maple-login.mp3");
-bgm.loop = true;
-
-document.addEventListener("click", function startBGM() {
-    bgm.play();
-    document.removeEventListener("click", startBGM);
-});
-
+    
 /* 原本公告不動 */
 const newsData = [
     {title:"職業平衡調整",type:"update",date:"2026-06-20",content:"修正技能傷害"},
@@ -470,7 +463,15 @@ function closeModal(e){
         document.getElementById("modal").classList.remove("active");
     }
 }
+function toggleBGM() {
+    const bgm = document.getElementById("bgm");
 
+    if (bgm.paused) {
+        bgm.play();
+    } else {
+        bgm.pause();
+    }
+}
 renderNews();
 /* 🎵 BGM設定 */
 const bgm = document.getElementById("bgm");
