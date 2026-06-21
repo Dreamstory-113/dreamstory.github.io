@@ -330,7 +330,29 @@ body{
         0 15px 35px rgba(255,110,160,0.18),
         0 0 20px rgba(255,182,193,0.15);
 }
-  
+.news-item::before{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:10px;
+
+    width:6px;
+    height:calc(100% - 20px);
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffb6d9,
+            #ff6fa7
+        );
+
+    border-radius:999px;
+
+    box-shadow:
+        0 0 10px rgba(255,111,167,.4);
+}  
 .title-text{
     font-weight:700;
     color:#333;
